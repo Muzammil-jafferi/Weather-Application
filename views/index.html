@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+    <nav class="navbar navbar-inverse navbar-inverse-head pad-navbar" >
+            <div class="container-fluid">
+                <div class="contr-wrapper">
+                <div class="navbar-header navbar-pad">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand navbar-brand-logo weather-logo" href="#">
+                        <img class="logo" src="images\logo.png"> 
+                        <h2 class="logo-name"> WEATHER APP </h2> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+      <fieldset>
+        <form action="/" method="post">
+          <input name="lat" type="text" class="ghost-input" placeholder="Enter a lat" required>
+          <input name="lon" type="text" class="ghost-input" placeholder="Enter a lon" required>
+          <input type="submit" onclick="getdate()" class="ghost-button" value="Get Weather">
+        </form>
+        {% if(error !== null) %}
+          <h3 style="color: red">{{ error }}</h3>
+        {% endif %}
+        <div class="featured">
+            <div class="container">
+                <div class="row">
+                    <h2 class="text-center feature-title"> {{weather.daily.summary}} </h2>
+                    <h2 class="text-center text"> 
+                    <span style="padding: 0px 25px">Latitude : {{weather.latitude}}</span> 
+                    <span style="padding: 0px 25px"> Longitude : {{weather.longitude}} </span>
+                    </h2>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div style="background-color: lightblue"><h3 class="box-title">{{b[0]}}</h3></div>
+                            <div class="caption" style="padding-bottom: 0px">
+                            <div class="row">
+                              <div class="col-md-6">
+                              {% if(weather.daily.data[0].icon === "rain") %}
+                                <img class="img-responsive"  src="images/rain.png">
+                              {% elif(weather.daily.data[0].icon === "wind") %}
+                                <img class="img-responsive" src="images/wind.png">
+                              {% elif(weather.daily.data[0].icon === "fog") %}
+                                <img class="img-responsive" src="images/fog.png">
+                              {% elif(weather.daily.data[0].icon === "cloudy") %}
+                                <img class="img-responsive" src="images/Cloudy.png">
+                              {% elif(weather.daily.data[0].icon === "partly-cloudy-night") %}
+                                <img class="img-responsive" src="images/PartlyCloudyNight.png">
+                              {% elif(weather.daily.data[0].icon === "clear-night") %}
+                                <img class="img-responsive"  src="images/clear-night.png">
+                              {% elif(weather.daily.data[0].icon === "partly-cloudy-day") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="images/partly-cloudy-day.png">
+                              {% elif(weather.daily.data[0].icon === "snow") %}
+                                <img class="img-responsive" src="images/snow.png">
+                              {% elif(weather.daily.data[0].icon === "clear-day") %}
+                                <img class="img-responsive" src="images/clear-day.png">
+                              {% endif %}
+                              </div>
+                              <div class="col-md-6">
+                                <div style="padding: 0px 8px;">
+                                    <h3>Min Temp : {{weather.daily.data[0].temperatureMin}} &deg;C</h3>
+                                    <h3>Max Temp : {{weather.daily.data[0].temperatureMax}} &deg;C</h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <p class="box-para">
+                                <span class="pad"> Speed : {{weather.daily.data[0].windSpeed}}</span> 
+                                <span class="pad"> Pressure :{{weather.daily.data[0].pressure}}  </span>
+                                <span class="pad"> Humidity :{{weather.daily.data[0].humidity}}  </span>
+                              </p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div style="background-color: lightblue"><h3 class="box-title">{{b[1]}}</h3></div>
+                            <div class="caption" style="padding-bottom: 0px">
+                            <div class="row">
+                              <div class="col-md-6">
+                              {% if(weather.daily.data[1].icon === "rain") %}
+                                <img class="img-responsive" src="images/rain.png">
+                              {% elif(weather.daily.data[1].icon === "wind") %}
+                                <img class="img-responsive" src="images/wind.png">
+                              {% elif(weather.daily.data[1].icon === "fog") %}
+                                <img class="img-responsive" src="images/fog.png">
+                              {% elif(weather.daily.data[1].icon === "cloudy") %}
+                                <img class="img-responsive" src="images/Cloudy.png">
+                              {% elif(weather.daily.data[1].icon === "partly-cloudy-night") %}
+                                <img class="img-responsive" src="images/PartlyCloudyNight.png">
+                              {% elif(weather.daily.data[1].icon === "clear-night") %}
+                                <img class="img-responsive" src="images/clear-night.png">
+                              {% elif(weather.daily.data[1].icon === "partly-cloudy-day") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="images/partly-cloudy-day.png">
+                              {% elif(weather.daily.data[1].icon === "snow") %}
+                                <img class="img-responsive" src="images/snow.png">
+                              {% elif(weather.daily.data[1].icon === "clear-day") %}
+                                <img class="img-responsive" src="images/clear-day.png">
+                              {% endif %}
+                              </div>
+                              <div class="col-md-6">
+                                <div style="padding: 0px 8px;">
+                                    <h3>Min Temp : {{weather.daily.data[1].temperatureMin}} &deg;C</h3>
+                                    <h3>Max Temp : {{weather.daily.data[1].temperatureMax}} &deg;C</h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <p class="box-para">
+                                <span class="pad"> Speed : {{weather.daily.data[1].windSpeed}}</span> 
+                                <span class="pad"> Pressure :{{weather.daily.data[1].pressure}}  </span>
+                                <span class="pad"> Humidity :{{weather.daily.data[1].humidity}}  </span>
+                              </p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div style="background-color: lightblue"><h3 class="box-title">{{b[2]}}</h3></div>
+                            <div class="caption" style="padding-bottom: 0px">
+                            <div class="row">
+                              <div class="col-md-6">
+                              {% if(weather.daily.data[2].icon === "rain") %}
+                                <img class="img-responsive" src="images/rain.png">
+                              {% elif(weather.daily.data[2].icon === "wind") %}
+                                <img class="img-responsive" src="images/wind.png">
+                              {% elif(weather.daily.data[2].icon === "fog") %}
+                                <img class="img-responsive" src="images/fog.png">
+                              {% elif(weather.daily.data[2].icon === "cloudy") %}
+                                <img class="img-responsive" src="images/Cloudy.png">
+                              {% elif(weather.daily.data[2].icon === "partly-cloudy-night") %}
+                                <img class="img-responsive" src="images/PartlyCloudyNight.png">
+                              {% elif(weather.daily.data[2].icon === "clear-night") %}
+                                <img class="img-responsive" src="images/clear-night.png">
+                              {% elif(weather.daily.data[2].icon === "partly-cloudy-day") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="images/partly-cloudy-day.png">
+                              {% elif(weather.daily.data[2].icon === "snow") %}
+                                <img class="img-responsive" src="images/snow.png">
+                              {% elif(weather.daily.data[2].icon === "clear-day") %}
+                                <img class="img-responsive" src="images/clear-day.png">
+                              {% endif %}
+                              </div>
+                              <div class="col-md-6">
+                                <div style="padding: 0px 8px;">
+                                    <h3>Min Temp : {{weather.daily.data[2].temperatureMin}} &deg;C</h3>
+                                    <h3>Max Temp : {{weather.daily.data[2].temperatureMax}} &deg;C</h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <p class="box-para">
+                                <span class="pad"> Speed : {{weather.daily.data[2].windSpeed}}</span> 
+                                <span class="pad"> Pressure :{{weather.daily.data[2].pressure}}  </span>
+                                <span class="pad"> Humidity :{{weather.daily.data[2].humidity}}  </span>
+                              </p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </fieldset>
+    </div>
+
+  </body>
+</html>
