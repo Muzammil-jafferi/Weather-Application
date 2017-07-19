@@ -7,6 +7,7 @@
 }
 .navbar-pad {
   padding-left: 2%;
+  padding-right: 8%;
 }
 .weather-logo{
   padding-top: 4px;
@@ -28,6 +29,14 @@
 .text{
   margin-bottom: 20px;
   margin-top: 10px;
+}
+.btn{
+  margin: 3px;
+  background-color: transparent;
+  padding:10px 30px;
+  width: 100%;
+  color: white;
+  font-weight: bold;
 }
 .box-title {
   margin-top: 0px;
