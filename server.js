@@ -22,9 +22,36 @@ app.set('view options', {
 });
 
 app.get('/', function(req, res) {
-  res.render('index.html', {
-    weather: null,
-    error: null
+  res.render('index.html')
+})
+
+app.get('/:lat/:lon', function(req, res) {
+  var options = {
+    method: 'GET',
+    url: 'https://api.darksky.net/forecast/' + apiKey + '/' + req.params.lat + ',' + req.params.lon + '?units=si'
+  };
+  request(options, function(err, response, body) {
+    if (err) {
+      res.render('index.html', {
+        weather: null,
+        error: 'Error, please try again'
+      });
+    } else {
+      let weather = JSON.parse(body)
+      if (weather.daily == undefined) {
+        res.render('index.html', {
+          weather: null,
+          error: 'Error, please try again'
+        });
+      } else {
+        var a = getdate(weather)
+        res.render('index.html', {
+          weather: weather,
+          b: a,
+          error: null
+        });
+      }
+    }
   });
 })
 
