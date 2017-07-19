@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </head>
   <body>
     <div class="container-fluid">
@@ -22,9 +23,18 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand navbar-brand-logo weather-logo" href="#">
-                        <img class="logo" src="images\logo.png"> 
+                        <img class="logo" src="/images/logo.png"> 
                         <h2 class="logo-name"> WEATHER APP </h2> 
                         </a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-left navbar-collapse-left" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-nav-margin">
+                            <li><a href="/19.0144/72.8479" style="padding: 0px 0px;"><input type="submit" class="mumbai btn" value="Mumbai" ></a></li>
+                            <li><a href="/51.5085/-0.1258" style="padding: 0px 0px;"><input type="submit" class="london btn" value="London" ></a></li>
+                            <li><a href="/40.7143/-74.006" style="padding: 0px 0px;"><input type="submit" class="newyork btn" value="New York" ></a></li>
+                            <li><a href="/-35.2977/149.151" style="padding: 0px 0px;"><input type="submit" class="austrailia btn" value="Austrailia" ></a></li>
+                            <li><a href="/7.1881/21.0938" style="padding: 0px 0px;"><input type="submit" class="africa btn" value="Africa" ></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -33,7 +43,7 @@
         <form action="/" method="post">
           <input name="lat" type="text" class="ghost-input" placeholder="Enter a lat" required>
           <input name="lon" type="text" class="ghost-input" placeholder="Enter a lon" required>
-          <input type="submit" onclick="getdate()" class="ghost-button" value="Get Weather">
+          <input type="submit" class="ghost-button" value="Get Weather">
         </form>
         {% if(error !== null) %}
           <h3 style="color: red">{{ error }}</h3>
@@ -52,24 +62,24 @@
                             <div class="caption" style="padding-bottom: 0px">
                             <div class="row">
                               <div class="col-md-6">
-                              {% if(weather.daily.data[0].icon === "rain") %}
-                                <img class="img-responsive"  src="images/rain.png">
-                              {% elif(weather.daily.data[0].icon === "wind") %}
-                                <img class="img-responsive" src="images/wind.png">
-                              {% elif(weather.daily.data[0].icon === "fog") %}
-                                <img class="img-responsive" src="images/fog.png">
-                              {% elif(weather.daily.data[0].icon === "cloudy") %}
-                                <img class="img-responsive" src="images/Cloudy.png">
-                              {% elif(weather.daily.data[0].icon === "partly-cloudy-night") %}
-                                <img class="img-responsive" src="images/PartlyCloudyNight.png">
-                              {% elif(weather.daily.data[0].icon === "clear-night") %}
-                                <img class="img-responsive"  src="images/clear-night.png">
-                              {% elif(weather.daily.data[0].icon === "partly-cloudy-day") %}
-                                <img class="img-responsive" style="opacity: 0.6" src="images/partly-cloudy-day.png">
-                              {% elif(weather.daily.data[0].icon === "snow") %}
-                                <img class="img-responsive" src="images/snow.png">
-                              {% elif(weather.daily.data[0].icon === "clear-day") %}
-                                <img class="img-responsive" src="images/clear-day.png">
+                              {% if(weather.daily.data[1].icon === "rain") %}
+                                <img class="img-responsive" src="/images/rain.png">
+                              {% elif(weather.daily.data[1].icon === "wind") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/wind.png">
+                              {% elif(weather.daily.data[1].icon === "fog") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/fog.png">
+                              {% elif(weather.daily.data[1].icon === "cloudy") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/Cloudy.png">
+                              {% elif(weather.daily.data[1].icon === "partly-cloudy-night") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/PartlyCloudyNight.png">
+                              {% elif(weather.daily.data[1].icon === "clear-night") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/clear-night.png">
+                              {% elif(weather.daily.data[1].icon === "partly-cloudy-day") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/partly-cloudy-day.png">
+                              {% elif(weather.daily.data[1].icon === "snow") %}
+                                <img class="img-responsive" src="/images/snow.png">
+                              {% elif(weather.daily.data[1].icon === "clear-day") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/clear-day.png">
                               {% endif %}
                               </div>
                               <div class="col-md-6">
@@ -96,23 +106,23 @@
                             <div class="row">
                               <div class="col-md-6">
                               {% if(weather.daily.data[1].icon === "rain") %}
-                                <img class="img-responsive" src="images/rain.png">
+                                <img class="img-responsive" src="/images/rain.png">
                               {% elif(weather.daily.data[1].icon === "wind") %}
-                                <img class="img-responsive" src="images/wind.png">
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/wind.png">
                               {% elif(weather.daily.data[1].icon === "fog") %}
-                                <img class="img-responsive" src="images/fog.png">
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/fog.png">
                               {% elif(weather.daily.data[1].icon === "cloudy") %}
-                                <img class="img-responsive" src="images/Cloudy.png">
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/Cloudy.png">
                               {% elif(weather.daily.data[1].icon === "partly-cloudy-night") %}
-                                <img class="img-responsive" src="images/PartlyCloudyNight.png">
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/PartlyCloudyNight.png">
                               {% elif(weather.daily.data[1].icon === "clear-night") %}
-                                <img class="img-responsive" src="images/clear-night.png">
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/clear-night.png">
                               {% elif(weather.daily.data[1].icon === "partly-cloudy-day") %}
-                                <img class="img-responsive" style="opacity: 0.6" src="images/partly-cloudy-day.png">
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/partly-cloudy-day.png">
                               {% elif(weather.daily.data[1].icon === "snow") %}
-                                <img class="img-responsive" src="images/snow.png">
+                                <img class="img-responsive" src="/images/snow.png">
                               {% elif(weather.daily.data[1].icon === "clear-day") %}
-                                <img class="img-responsive" src="images/clear-day.png">
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/clear-day.png">
                               {% endif %}
                               </div>
                               <div class="col-md-6">
@@ -138,24 +148,24 @@
                             <div class="caption" style="padding-bottom: 0px">
                             <div class="row">
                               <div class="col-md-6">
-                              {% if(weather.daily.data[2].icon === "rain") %}
-                                <img class="img-responsive" src="images/rain.png">
-                              {% elif(weather.daily.data[2].icon === "wind") %}
-                                <img class="img-responsive" src="images/wind.png">
-                              {% elif(weather.daily.data[2].icon === "fog") %}
-                                <img class="img-responsive" src="images/fog.png">
-                              {% elif(weather.daily.data[2].icon === "cloudy") %}
-                                <img class="img-responsive" src="images/Cloudy.png">
-                              {% elif(weather.daily.data[2].icon === "partly-cloudy-night") %}
-                                <img class="img-responsive" src="images/PartlyCloudyNight.png">
-                              {% elif(weather.daily.data[2].icon === "clear-night") %}
-                                <img class="img-responsive" src="images/clear-night.png">
-                              {% elif(weather.daily.data[2].icon === "partly-cloudy-day") %}
-                                <img class="img-responsive" style="opacity: 0.6" src="images/partly-cloudy-day.png">
-                              {% elif(weather.daily.data[2].icon === "snow") %}
-                                <img class="img-responsive" src="images/snow.png">
-                              {% elif(weather.daily.data[2].icon === "clear-day") %}
-                                <img class="img-responsive" src="images/clear-day.png">
+                              {% if(weather.daily.data[1].icon === "rain") %}
+                                <img class="img-responsive" src="/images/rain.png">
+                              {% elif(weather.daily.data[1].icon === "wind") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/wind.png">
+                              {% elif(weather.daily.data[1].icon === "fog") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/fog.png">
+                              {% elif(weather.daily.data[1].icon === "cloudy") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/Cloudy.png">
+                              {% elif(weather.daily.data[1].icon === "partly-cloudy-night") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/PartlyCloudyNight.png">
+                              {% elif(weather.daily.data[1].icon === "clear-night") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/clear-night.png">
+                              {% elif(weather.daily.data[1].icon === "partly-cloudy-day") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/partly-cloudy-day.png">
+                              {% elif(weather.daily.data[1].icon === "snow") %}
+                                <img class="img-responsive" src="/images/snow.png">
+                              {% elif(weather.daily.data[1].icon === "clear-day") %}
+                                <img class="img-responsive" style="opacity: 0.6" src="/images/clear-day.png">
                               {% endif %}
                               </div>
                               <div class="col-md-6">
@@ -179,6 +189,5 @@
               </div>
       </fieldset>
     </div>
-
   </body>
 </html>
